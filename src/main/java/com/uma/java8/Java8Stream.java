@@ -3,6 +3,7 @@ package com.uma.java8;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,7 @@ public class Java8Stream {
 		System.out.println("--->>>Java8Stream examples");
 
 		concurrentMapNewFeatures();
+		returnSetUsingStream();
 
 		filteringWithStreams();
 	}
@@ -26,6 +28,17 @@ public class Java8Stream {
 		 * List<String> filteredResults = values.stream().filter(s -> s.length() >
 		 * 5).collect(Collectors.toList()); System.out.println(filteredResults);
 		 */
+	}
+
+	private static void returnSetUsingStream() {
+
+		System.out.println("-->returnSetUsingStream{} ");
+		// create a list of integers
+		List<Integer> numbers = Arrays.asList(2, 2, 4, 5, 2);
+		// collect method returns a set
+		Set<Integer> squareSet = numbers.stream().map(x -> x * x).collect(Collectors.toSet());
+		squareSet.stream().forEach(s -> System.out.println(s));
+
 	}
 
 	private static void filteringWithStreamsUsingMap() {
