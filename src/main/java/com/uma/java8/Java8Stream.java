@@ -1,5 +1,6 @@
 package com.uma.java8;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,8 @@ public class Java8Stream {
 	public static void main(String[] args) {
 		System.out.println("--->>>Java8Stream examples");
 
-		UsingDistinctByStream();
+		usingSortingByStream();
+		usingDistinctByStream();
 		concurrentMapNewFeatures();
 		returnSetUsingStream();
 
@@ -57,11 +59,19 @@ public class Java8Stream {
 
 	}
 
-	private static void UsingDistinctByStream() {
+	private static void usingDistinctByStream() {
 
 		System.out.println("--->>UsingDistinctByStream {}");
 		List<Integer> numbers = Arrays.asList(2, 2, 4, 5, 2);
 		numbers.stream().distinct().forEach(d -> System.out.println(d));
+
+	}
+
+	private static void usingSortingByStream() {
+
+		System.out.println("--->>usingSortingByStream {}");
+		List<Employee> employees = getEmployeeData();
+		employees.stream().sorted().forEach(n -> System.out.println(n));
 
 	}
 
@@ -76,5 +86,21 @@ public class Java8Stream {
 		map.put("One1111", "One");
 
 		map.forEachKey(2, k -> k.length(), System.out::println);
+	}
+
+	private static List<Employee> getEmployeeData() {
+
+		Employee emp1 = new Employee(2, "uma", "patra", 10.0f);
+		Employee emp2 = new Employee(3, "uma", "patra", 15.0f);
+		Employee emp3 = new Employee(3, "uma", "patra", 16.0f);
+		Employee emp4 = new Employee(3, "uma", "patra", 17.0f);
+
+		List<Employee> empObj = new ArrayList<Employee>();
+		empObj.add(emp1);
+		empObj.add(emp2);
+		empObj.add(emp3);
+		empObj.add(emp4);
+
+		return empObj;
 	}
 }
