@@ -1,4 +1,4 @@
-package corejava.corejava;
+package com.uma.java8Test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

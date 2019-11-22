@@ -15,6 +15,7 @@ public class Java8Stream {
 	public static void main(String[] args) {
 		System.out.println("--->>>Java8Stream examples");
 
+		UsingDistinctByStream();
 		concurrentMapNewFeatures();
 		returnSetUsingStream();
 
@@ -56,7 +57,17 @@ public class Java8Stream {
 
 	}
 
+	private static void UsingDistinctByStream() {
+
+		System.out.println("--->>UsingDistinctByStream {}");
+		List<Integer> numbers = Arrays.asList(2, 2, 4, 5, 2);
+		numbers.stream().distinct().forEach(d -> System.out.println(d));
+
+	}
+
 	private static void concurrentMapNewFeatures() {
+
+		System.out.println("-->concurrentMapNewFeatures{}");
 		ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>();
 		map.put("One", "One");
 		map.put("One1", "One");
