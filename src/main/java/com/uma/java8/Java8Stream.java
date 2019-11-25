@@ -16,8 +16,10 @@ import java.util.stream.Collectors;
  */
 public class Java8Stream {
 	public static void main(String[] args) {
+
 		System.out.println("--->>>Java8Stream examples");
 
+		usingMapByStream();
 		usingMaxByStream();
 		usingSortingByStream();
 		usingDistinctByStream();
@@ -28,20 +30,17 @@ public class Java8Stream {
 	}
 
 	private static void filteringWithStreams() {
-		List<String> values = Arrays.asList("umashankar", "Sailesh", "Kalia", "Jadhu", "Pratap");
+
 		filteringWithStreamsUsingMap();
-		/*
-		 * List<String> filteredResults = values.stream().filter(s -> s.length() >
-		 * 5).collect(Collectors.toList()); System.out.println(filteredResults);
-		 */
+
 	}
 
 	private static void returnSetUsingStream() {
 
 		System.out.println("-->returnSetUsingStream{} ");
-		// create a list of integers
+
 		List<Integer> numbers = Arrays.asList(2, 2, 4, 5, 2);
-		// collect method returns a set
+
 		Set<Integer> squareSet = numbers.stream().map(x -> x * x).collect(Collectors.toSet());
 		squareSet.stream().forEach(s -> System.out.println(s));
 
@@ -88,6 +87,12 @@ public class Java8Stream {
 		} else {
 			System.out.println("Element is not present");
 		}
+	}
+
+	private static void usingMapByStream() {
+
+		List<Employee> employee = getEmployeeData();
+		employee.stream().map(Employee::getSalary).forEach(s -> System.out.println("salary" + s));
 	}
 
 	private static Comparator<Integer> getHigestValue() {
