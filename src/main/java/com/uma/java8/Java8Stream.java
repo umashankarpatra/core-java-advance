@@ -2,8 +2,10 @@ package com.uma.java8;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
@@ -16,6 +18,7 @@ public class Java8Stream {
 	public static void main(String[] args) {
 		System.out.println("--->>>Java8Stream examples");
 
+		usingMaxByStream();
 		usingSortingByStream();
 		usingDistinctByStream();
 		concurrentMapNewFeatures();
@@ -61,7 +64,7 @@ public class Java8Stream {
 
 	private static void usingDistinctByStream() {
 
-		System.out.println("--->>UsingDistinctByStream {}");
+		System.out.println("--->>UsingDistinctByStream {} ");
 		List<Integer> numbers = Arrays.asList(2, 2, 4, 5, 2);
 		numbers.stream().distinct().forEach(d -> System.out.println(d));
 
@@ -69,9 +72,35 @@ public class Java8Stream {
 
 	private static void usingSortingByStream() {
 
-		System.out.println("--->>usingSortingByStream {}");
+		System.out.println("--->>usingSortingByStream {} ");
 		List<Employee> employees = getEmployeeData();
 		employees.stream().sorted().forEach(n -> System.out.println(n));
+
+	}
+
+	private static void usingMaxByStream() {
+
+		System.out.println("--->>usingMaxByStream {} ");
+		List<Integer> list = Arrays.asList(-9, -18, 0, 25, 4);
+		Optional<Integer> maxNumber = list.stream().max(Java8Stream.getHigestValue());
+		if (maxNumber.isPresent()) {
+			System.out.println(maxNumber.get());
+		} else {
+			System.out.println("Element is not present");
+		}
+	}
+
+	private static Comparator<Integer> getHigestValue() {
+		Comparator<Integer> maxComparator = new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer n1, Integer n2) {
+				return n2.compareTo(n1);
+			}
+
+		};
+
+		return maxComparator;
 
 	}
 
