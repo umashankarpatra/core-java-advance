@@ -1,8 +1,8 @@
+
 package com.uma.java8;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Employee implements Comparable<Employee> {
 
@@ -81,6 +81,5 @@ public class Employee implements Comparable<Employee> {
 
 		return empObj;
 	}
-	
-	
+
 }
