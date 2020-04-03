@@ -2,6 +2,7 @@
 package com.uma.java8;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Employee implements Comparable<Employee> {
@@ -10,6 +11,7 @@ public class Employee implements Comparable<Employee> {
 	private String name;
 	private String lname;
 	private double salary;
+	private Date dateOfBirth;
 
 	public Employee() {
 
@@ -20,7 +22,19 @@ public class Employee implements Comparable<Employee> {
 		this.name = name;
 		this.lname = lname;
 		this.salary = salary;
+	}
 
+	public Employee(Date dateOfBirth, double salary) {
+		this.dateOfBirth = dateOfBirth;
+		this.salary = salary;
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Integer getId() {
@@ -66,7 +80,7 @@ public class Employee implements Comparable<Employee> {
 		return "Employee [id=" + id + ", name=" + name + ", lname=" + lname + ", salary=" + salary + "]";
 	}
 
-	static List<Employee> getEmployeeData() {
+	public static List<Employee> getEmployeeData() {
 
 		Employee emp1 = new Employee(2, "uma", "patra", 10.0f);
 		Employee emp2 = new Employee(3, "uma", "patra", 15.0f);
