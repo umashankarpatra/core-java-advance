@@ -18,7 +18,7 @@ public class MapAndFlatMapMethodExample {
 		List<java.util.Date> dateOfBirth = employies.stream().map(Employee::getDateOfBirth)
 				.collect(Collectors.toList());
 		System.out.println(dateOfBirth);
-
+ 
 		// flatMap() example
 
 		List<Integer> employeeAge = Arrays.asList(23, 34, 90, 34);
