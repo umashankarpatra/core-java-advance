@@ -1,8 +1,10 @@
 package com.uma.java8;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class ManagerUtil {
@@ -37,9 +39,10 @@ public class ManagerUtil {
 
 		List<Manager> managerList = getManagerDetails();
 
-		// getNameOfAllDepartment(managerList);
-		// getEmpName(managerList);
+		getNameOfAllDepartment(managerList);
+		getEmpName(managerList);
 		getAvgSalEachDept(managerList);
+		getYoungestEmpByDept(managerList);
 
 	}
 	/*
@@ -47,6 +50,23 @@ public class ManagerUtil {
 	 * 
 	 * @return average salary of each department
 	 */
+
+	private static void getYoungestEmpByDept(List<Manager> managerList) {
+
+		if (managerList != null && managerList.size() > 0) {
+
+			Optional<Manager> yogestManager = managerList.stream()
+					.filter(manager -> manager.getDepartment() == "Product Development")
+					.min(Comparator.comparingInt(Manager::getAge));
+			if (yogestManager.isPresent()) {
+				System.out.println("--->>> :: Yogest Manager ::" + yogestManager);
+
+			} else {
+				System.out.println("---->>> ::  No Yogest Manager ::");
+			}
+
+		}
+	}
 
 	private static void getAvgSalEachDept(List<Manager> managerList) {
 
